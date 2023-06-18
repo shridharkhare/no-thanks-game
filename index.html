@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>No Thanks!</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+        />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>No Thanks!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <body>
+        <main class="container">
+            <h1>No Thanks!</h1>
+            <p>Click the button to start the game!</p>
+            <button id="start" role="button">Start</button>
 
-</head>
+            <!-- Mode switcher button -->
+            <button id="theme-button">Switch Mode</button>
+        </main>
 
-<body>
-    <article>I'm a card!</article>
-</body>
-
+        <!-- Script -->
+        <script src="index.js" defer></script>
+    </body>
 </html>

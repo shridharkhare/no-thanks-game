@@ -42,22 +42,25 @@ body {
     position: relative;
 }
 
-.shuffling-deck .card {
+.card {
     position: absolute;
-    width: 35px;
-    height: 50px;
-    background-color: limegreen;
+    width: 50px;
+    height: 70px;
+    
+    color: black;
+    background-color: lightgreen;
     border-radius: 5px;
-    border: 3px solid green;
+    border: 3px solid var(--secondary);
 
     display: grid;
     place-items: center;
 
-    animation: shuffle 1s ease-in-out infinite;
-
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
     font-size: 1.5rem;
-    color: black;
+}
+
+.removed-card {
+    background-color: rgb(238, 171, 144);
 }
 
 .hero-actions {

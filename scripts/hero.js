@@ -10,18 +10,18 @@ for (let i = 3; i <= 35; i++) {
 // Get all possible positions for the cards, if each row has 8 cards
 // Card has     width: 35px height: 50px;
 function regeneratePositions() {
-    const paddingSpacing = 30;
-    const innerSpacing = 20;
+    const paddingSpacing = 20;
+    const innerSpacing = 10;
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 4; j++) {
-            const x = (i * innerSpacing) + (i * 35) + paddingSpacing;
-            const y = (j * innerSpacing) + (j * 50) + paddingSpacing;
+            const x = (i * innerSpacing) + (i * 50) + paddingSpacing;
+            const y = (j * innerSpacing) + (j * 70) + paddingSpacing;
             positions.push({ x, y });
         }
     }
 
-    const lastPositionX = (0 * innerSpacing) + (0 * 35) + paddingSpacing;
-    const lastPositionY = (4 * innerSpacing) + (4 * 50) + paddingSpacing;
+    const lastPositionX = (0 * innerSpacing) + (0 * 50) + paddingSpacing;
+    const lastPositionY = (4 * innerSpacing) + (4 * 70) + paddingSpacing;
 
     positions.push({ x: lastPositionX, y: lastPositionY });
 };
@@ -102,6 +102,7 @@ function scatterCards() {
 
 function gatherCards() {
     const cards = document.querySelectorAll('.card');
+
     cards.forEach(card => {
         const startX = card.getAttribute('data-start-x');
         const startY = card.getAttribute('data-start-y');
@@ -113,17 +114,46 @@ function gatherCards() {
     });
 }
 
+function give9cardsDifferentColor() {
+    const cards = document.querySelectorAll('.card');
+
+    // Generate 9 random numbers between 0 and 35
+    const randomNumbers = [];
+    while (randomNumbers.length < 9) {
+        const randomNumber = Math.floor(Math.random() * 36);
+        if (!randomNumbers.includes(randomNumber)) {
+            randomNumbers.push(randomNumber);
+        }
+    }
+
+    // Give the cards with the random numbers different color
+    for (let i = 0; i < cards.length; i++) {
+        if (randomNumbers.includes(i)) {
+            cards[i].classList.add('removed-card');
+        }
+    }
+}
+
+function flushColors() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.classList.remove('removed-card');
+    });
+}
+
 function animationLoop() {
     regeneratePositions();
+    give9cardsDifferentColor();
     scatterCards();
 
-    // // Wait for 1 second
+    // Wait for 2 second
     setTimeout(() => {
         gatherCards();
     }, 2000);
 
-    // // Wait for 2 seconds
+    // Wait for 4 seconds
     setTimeout(() => {
+        flushColors();
         animationLoop();
     }, 4000);
 }

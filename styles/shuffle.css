@@ -1,0 +1,27 @@
+.shuffling-deck {
+    position: relative;
+}
+
+.card {
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    
+    color: var(--contrast);
+    background: var(--background-color);
+    border-radius: 5px;
+    border: 3px solid var(--contrast);
+
+    display: grid;
+    place-items: center;
+
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+    font-family: 'Geologica', sans-serif;
+    font-size: 1.5rem;
+    /* font-weight: bold; */
+}
+
+.removed-card {
+    color: var(--del-color);
+    border-color: var(--del-color);
+}

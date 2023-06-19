@@ -1,16 +1,5 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    position: relative;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-}
-
 .hero {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100vh;
 
@@ -27,51 +16,28 @@ body {
     padding: 3rem;
 }
 
-.theme-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    padding: 0;
-    z-index: 100;
-}
-
-.shuffling-deck {
-    position: relative;
-}
-
-.card {
-    position: absolute;
-    width: 50px;
-    height: 70px;
-    
-    color: black;
-    background-color: lightgreen;
-    border-radius: 5px;
-    border: 3px solid var(--secondary);
-
-    display: grid;
-    place-items: center;
-
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
-    font-size: 1.5rem;
-}
-
-.removed-card {
-    background-color: rgb(238, 171, 144);
-}
-
 .hero-actions {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 .hero-actions h1 {
-    font-family: noto-sans, sans-serif;
+    font-family: 'Noto-sans', sans-serif;
     font-size: 3rem;
     text-align: center;
+    border: 1px solid var(--contrast);
+    border-left: none;
+    border-right: none;
+    border-radius: 10px;
+    padding: 1rem ;
+}
+
+#how-to li {
+    padding: 0.5rem;
+
+}
+
+mark{
+    border-radius: 5px;
 }

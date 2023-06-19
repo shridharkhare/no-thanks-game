@@ -4,6 +4,12 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Description -->
+        <meta
+            name="description"
+            content="A simple web app to play the card game No Thanks!"
+        />
+
         <title>No Thanks!</title>
         <!-- FontAwesome -->
         <script
@@ -17,7 +23,15 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geologica&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./styles/shuffle.css" />
         <link rel="stylesheet" href="./styles/index.css" />
+        <link rel="stylesheet" href="./styles/master.css" />
     </head>
 
     <body>
@@ -26,6 +40,8 @@
             class="theme-button"
             id="theme-button"
             aria-label="Switch theme"
+            data-tooltip="Switch theme"
+            data-placement="left"
         >
             <i class="fa-solid"></i>
         </button>
@@ -34,10 +50,104 @@
             <div class="shuffling-deck"></div>
             <div class="hero-actions">
                 <h1>No Thanks!</h1>
-                <button class="contrast">Start</button>
-                <button class="contrast">How to play</button>
+                <button class="" id="lobby-btn">Join/Create Room</button>
+                <a role="button" href="#how-to" class="contrast">How to play</a>
             </div>
         </div>
+
+        <!-- How to play -->
+        <main>
+            <section class="container" id="how-to">
+                <h2>How to play</h2>
+
+                <p>
+                    No Thanks! is a card game designed to be as simple as
+                    possible to learn while still being fun to play. Players
+                    must employ strategic <b>Decision-making</b> and skillful
+                    <b>Risk Management</b>. Evaluating the value of each card,
+                    understanding when to take risks and when to play it safe,
+                    and making astute choices are crucial to achieving a low
+                    score. <br />
+                    <br />Players will need to exercise their judgement and
+                    evaluation skills, assess the risks involved, effectively
+                    manage their resources, and engage in strategic thinking
+                    throughout the game.
+                    <b
+                        >The goal of the game is to have the lowest score at the
+                        end of the game.
+                    </b>
+                </p>
+
+                <h4>Intial setup</h4>
+                <ul>
+                    <li>
+                        The game is played with a <em>custom deck</em> of cards
+                        numbered from 3 to 35.
+                    </li>
+
+                    <li>
+                        Nine cards are randomly removed and the deck is
+                        shuffled.
+                    </li>
+
+                    <li>
+                        At the start of the game, each player is given 11 chips.
+                        Chips are worth one negative point each.
+                    </li>
+                </ul>
+
+                <h4>Gameplay</h4>
+
+                <ul>
+                    <li>Each turn, a card is flipped from the deck.</li>
+
+                    <li>
+                        The player can either
+                        <mark>pay one chip to pass</mark> saying "No thanks!" or
+                        <mark>take the card</mark> and the chips on it.
+                    </li>
+
+                    <li>
+                        If they pass, they place one of their chips on the card
+                        and move the card to the next player.
+                    </li>
+
+                    <li>
+                        If the player doesn't have any chips left, then the
+                        player must take the card.
+                    </li>
+
+                    <li>
+                        If the player takes the card, they add it to their score
+                        and collect any chips on it. The player then flips the
+                        next card from the deck and the process repeats.
+                    </li>
+
+                    <li>The game ends when the deck is empty.</li>
+                </ul>
+
+                <h4>Scoring</h4>
+
+                <ul>
+                    <li>
+                        At the end of the game, players accrue points from cards
+                        according to their value, but cards in a row only count
+                        as a single card with the lowest value. (e.g., a run
+                        with cards numbered 30, 29, 28, 27 is worth 27 points).
+                    </li>
+
+                    <li>
+                        Number of chips are subtracted from the score as they
+                        <mark>worth one negative point.</mark>
+                    </li>
+
+                    <li>
+                        The player(s) with the lowest number of points win(s)
+                        the game.
+                    </li>
+                </ul>
+            </section>
+        </main>
 
         <!-- Script -->
         <script type="module" src="./scripts/index.js" defer></script>

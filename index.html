@@ -1,27 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>No Thanks!</title>
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
-        />
-    </head>
+<html lang="en">
 
-    <body>
-        <main class="container">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No Thanks!</title>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/43a2678f12.js" crossorigin="anonymous" defer></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<body>
+    <!-- Mode switcher button -->
+    <button class="theme-button" id="theme-button" aria-label="Switch theme">
+        <i class="fa-solid"></i>
+    </button>
+
+
+    <div class="hero">
+        <div class="shuffling-deck">
+            <div class="card">3
+            </div>
+        </div>
+        <div class="hero-actions">
             <h1>No Thanks!</h1>
-            <p>Click the button to start the game!</p>
-            <button id="start" role="button">Start</button>
+            <button class="contrast ">Start</button>
+            <button class="contrast ">How to play</button>
+        </div>
+    </div>
 
-            <!-- Mode switcher button -->
-            <button id="theme-button">Switch Mode</button>
-        </main>
+    <!-- Script -->
+    <script type="module" src="./scripts/index.js" defer></script>
+</body>
 
-        <!-- Script -->
-        <script src="index.js" defer></script>
-    </body>
 </html>

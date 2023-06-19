@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Description -->
+        <meta
+            name="description"
+            content="A simple web app to play the card game No Thanks!"
+        />
+
+        <title>No Thanks! - Lobby</title>
+        <!-- FontAwesome -->
+        <script
+            src="https://kit.fontawesome.com/43a2678f12.js"
+            crossorigin="anonymous"
+            defer
+        ></script>
+
+        <!-- Styles -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geologica&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./styles/master.css" />
+    </head>
+
+    <body>
+        <!-- Mode switcher button -->
+        <button
+            class="theme-button"
+            id="theme-button"
+            aria-label="Switch theme"
+            data-tooltip="Switch theme"
+            data-placement="left"
+        >
+            <i class="fa-solid"></i>
+        </button>
+
+        <!-- Header -->
+        <header class="container">
+            <nav aria-label="breadcrumb">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>Lobby</li>
+                </ul>
+            </nav>
+            <hgroup>
+                <h1>Lobby</h1>
+                <h2>Create or join a room</h2>
+            </hgroup>
+
+            <div class="grid">
+                <!-- Form to create room -->
+                <form id="create-room-form">
+                    <label for="roomname">
+                        Room name
+                        <input
+                            type="text"
+                            id="roomname"
+                            name="roomname"
+                            placeholder="Give a name to your room"
+                            required
+                        />
+                        <button type="submit">Create a room</button>
+                    </label>
+                </form>
+                <!-- Form to create room -->
+                <form id="join-room-form">
+                    <label for="roomname">
+                        ID of private room
+                        <input
+                            type="text"
+                            id="roomname"
+                            name="roomname"
+                            placeholder="Enter the ID of the room"
+                            required
+                        />
+                        <button type="submit">Join a private room</button>
+                    </label>
+                </form>
+            </div>
+        </header>
+
+        <!-- Main -->
+        <main></main>
+
+        <!-- Script -->
+        <script type="module" src="./scripts/lobby.js" defer></script>
+    </body>
+</html>

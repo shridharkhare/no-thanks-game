@@ -39,13 +39,11 @@ body {
 }
 
 .shuffling-deck {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-gap: 1rem;
+    position: relative;
 }
 
 .shuffling-deck .card {
-    position: relative;
+    position: absolute;
     width: 35px;
     height: 50px;
     background-color: limegreen;

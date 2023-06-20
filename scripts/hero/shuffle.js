@@ -8,7 +8,7 @@ for (let i = 3; i <= 35; i++) {
 }
 
 // Get all possible positions for the cards, if each row has 8 cards
-// Card has     width: 35px height: 50px;
+// Card has     width: 50px height: 70px;
 function regeneratePositions() {
     const paddingSpacing = 20;
     const innerSpacing = 10;
@@ -26,7 +26,7 @@ function regeneratePositions() {
     positions.push({ x: lastPositionX, y: lastPositionY });
 };
 
-//Shuffling the array of cards
+//Shuffling the array of cards / Randomizing the deck
 function randomizeDeck() {
     for (let i = 0; i < deck.length; i++) {
         const randomIndex = Math.floor(Math.random() * deck.length);
@@ -45,13 +45,13 @@ export function setInitialDeck() {
         card.innerHTML = deck[i];
         shufflingDeck.appendChild(card);
 
-        // Set the initial position of the card
+        // Set the initial position of the card to the center of the shuffling deck
         const cardRect = card.getBoundingClientRect();
-        const cardCenterX = cardRect.left + cardRect.width / 2;
-        const cardCenterY = cardRect.top + cardRect.height / 2;
+        const cardCenterX = cardRect.left + (cardRect.width / 2);
+        const cardCenterY = cardRect.top + (cardRect.height / 2);
 
-        const shufflingDeckCenterX = shufflingDeckRect.left + shufflingDeckRect.width / 2;
-        const shufflingDeckCenterY = shufflingDeckRect.top + shufflingDeckRect.height / 2;
+        const shufflingDeckCenterX = shufflingDeckRect.left + (shufflingDeckRect.width / 2);
+        const shufflingDeckCenterY = shufflingDeckRect.top + (shufflingDeckRect.height / 2);
 
         const deltaX = shufflingDeckCenterX - cardCenterX;
         const deltaY = shufflingDeckCenterY - cardCenterY;

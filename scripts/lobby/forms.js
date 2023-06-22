@@ -1,4 +1,4 @@
-// Console log info when join-room-form is submitted
+import { writeRoomData } from "../firebase.js";
 
 const createRoomForm = document.forms['create-room-form'];
 
@@ -13,5 +13,7 @@ createRoomForm.addEventListener('submit', (e) => {
 
     console.log(`Room name: ${roomName}`);
     console.log(`Password: ${password}`);
+
+    writeRoomData('03', roomName, password);
 
 });

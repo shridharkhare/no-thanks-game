@@ -1,152 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Description -->
-        <meta
-            name="description"
-            content="A simple web app to play the card game No Thanks!"
-        />
 
-        <title>No Thanks! - Lobby</title>
-        <!-- FontAwesome -->
-        <script
-            src="https://kit.fontawesome.com/43a2678f12.js"
-            crossorigin="anonymous"
-            defer
-        ></script>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Description -->
+    <meta name="description" content="A simple web app to play the card game No Thanks!" />
 
-        <!-- Styles -->
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Geologica&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="./styles/lobby.css" />
-        <link rel="stylesheet" href="./styles/master.css" />
-    </head>
+    <title>No Thanks! - Lobby</title>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/43a2678f12.js" crossorigin="anonymous" defer></script>
 
-    <body>
-        <!-- Mode switcher button -->
-        <button
-            class="theme-button"
-            id="theme-button"
-            aria-label="Switch theme"
-            data-tooltip="Switch theme"
-            data-placement="left"
-        >
-            <i class="fa-solid"></i>
-        </button>
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geologica&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/lobby.css" />
+    <link rel="stylesheet" href="./styles/master.css" />
+</head>
 
-        <header class="container">
-            <nav aria-label="breadcrumb">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li>Lobby</li>
-                </ul>
-            </nav>
-            <hgroup>
-                <h1>Lobby</h1>
-                <h2>Create or join a room</h2>
-            </hgroup>
-        </header>
+<body>
+    <!-- Mode switcher button -->
+    <button class="theme-button" id="theme-button" aria-label="Switch theme" data-tooltip="Switch theme"
+        data-placement="left">
+        <i class="fa-solid"></i>
+    </button>
 
-        <section class="container">
-            <div class="lobby-content">
-                <article class="lobby-forms">
-                    <!-- Form to Join a room -->
-                    <form id="join-room-form">
-                        <h4>Join a private room</h4>
-                        <label for="roomname">
-                            ID
-                            <input
-                                type="text"
-                                id="join-roomname"
-                                name="roomname"
-                                placeholder="Enter the ID of the room"
-                                required
-                            />
+    <header class="container">
+        <nav aria-label="breadcrumb">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Lobby</li>
+            </ul>
+        </nav>
+        <hgroup>
+            <h1>Lobby</h1>
+            <h2>Create or join a room</h2>
+        </hgroup>
+    </header>
+
+    <section class="container">
+        <div class="lobby-content">
+            <article class="lobby-forms">
+                <!-- Form to Join a room -->
+                <form id="join-room-form">
+                    <h4>Join a private room</h4>
+                    <label for="roomname">
+                        ID
+                        <input type="text" id="join-roomname" name="roomname" placeholder="Enter the ID of the room"
+                            required />
+                    </label>
+                    <label for="password">
+                        Password
+                        <input type="password" id="join-password" name="password"
+                            placeholder="Enter the password of the room" required />
+                    </label>
+                    <button type="submit">Join room</button>
+                </form>
+
+                <hr />
+                <br />
+
+                <!-- Form to create room -->
+                <form id="create-room-form">
+                    <h4>Create a room</h4>
+                    <label for="roomname">
+                        Room name
+                        <input type="text" id="create-roomname" name="roomname" placeholder="Give a name to your room"
+                            required />
+                    </label>
+                    <!-- Checkbox -->
+                    <fieldset>
+                        <label for="private">
+                            <input type="checkbox" id="private" name="private" value="private" role="switch" />
+                            Private
                         </label>
-                        <label for="password">
-                            Password
-                            <input
-                                type="password"
-                                id="join-password"
-                                name="password"
-                                placeholder="Enter the password of the room"
-                                required
-                            />
-                        </label>
-                        <button type="submit">Join room</button>
-                    </form>
+                    </fieldset>
+                    <label for="password" class="hidden" id="create-room-password">
+                        Password
+                        <input type="password" id="create-password" name="password"
+                            placeholder="Enter a password for your room" />
+                    </label>
+                    <button type="submit">Create a room</button>
+                </form>
+            </article>
 
-                    <hr />
-                    <br />
-
-                    <!-- Form to create room -->
-                    <form id="create-room-form">
-                        <h4>Create a room</h4>
-                        <label for="roomname">
-                            Room name
-                            <input
-                                type="text"
-                                id="create-roomname"
-                                name="roomname"
-                                placeholder="Give a name to your room"
-                                required
-                            />
-                        </label>
-                        <!-- Checkbox -->
-                        <fieldset>
-                            <label for="private">
-                                <input
-                                    type="checkbox"
-                                    id="private"
-                                    name="private"
-                                    value="private"
-                                    role="switch"
-                                />
-                                Private
-                            </label>
-                        </fieldset>
-                        <label
-                            for="password"
-                            class="hidden"
-                            id="create-room-password"
-                        >
-                            Password
-                            <input
-                                type="password"
-                                id="create-password"
-                                name="password"
-                                placeholder="Enter a password for your room"
-                            />
-                        </label>
-                        <button type="submit">Create a room</button>
-                    </form>
-                </article>
-
-                <div class="public-rooms">
-                    <h3>Public rooms</h3>
-                    <div id="public-rooms-list">
-                        <article class="room-card">Room 1</article>
-                        <article class="room-card">Room 2</article>
-                        <article class="room-card">Room 3</article>
-                        <article class="room-card">Room 4</article>
-                        <article class="room-card">Room 5</article>
-                    </div>
+            <div class="public-rooms">
+                <h3>Public rooms</h3>
+                <div id="public-rooms-list">
+                    <article class="room-card">Room 1</article>
+                    <article class="room-card">Room 2</article>
+                    <article class="room-card">Room 3</article>
+                    <article class="room-card">Room 4</article>
+                    <article class="room-card">Room 5</article>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Script -->
-        <script type="module" src="./scripts/lobby.js" defer></script>
-    </body>
+    <!-- Script -->
+    <script type="module" src="./scripts/lobby.js" defer></script>
+</body>
+
 </html>

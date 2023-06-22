@@ -1,4 +1,4 @@
-import { setInitialTheme } from "./theme.js";
+import { setInitialTheme } from "./utils/theme.js";
 import { startShuffle } from "./hero/hero.js";
 
 setInitialTheme();

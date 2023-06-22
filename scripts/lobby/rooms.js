@@ -1,5 +1,5 @@
 import { set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
-import { db } from "../firebase.js";
+import { db } from "../utils/firebase.js";
 
 export const isPrivateChkBox = document.getElementById("private");
 export const passwordInput = document.getElementById("create-room-password");
@@ -39,9 +39,14 @@ export function updateRooms(rooms) {
     // Add each room to the list
     for (const room in rooms) {
         const roomName = rooms[room].roomName;
+        const roomId = room;
 
         const roomItem = document.createElement("article");
         roomItem.classList.add("room-card");
+
+        roomItem.addEventListener("click", () => {
+            window.location.href = "/room.html?roomId=" + roomId;
+        });
 
         const roomNameElement = document.createElement("h3");
         roomNameElement.textContent = roomName;

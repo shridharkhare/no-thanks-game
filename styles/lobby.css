@@ -21,7 +21,14 @@ body > header {
 
 .room-card {
     padding: 1rem;
-    margin: 0.5rem 0
+    margin: 0.5rem 0;
+    cursor: pointer;
+}
+
+.room-card:hover {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--primary);
 }
 
 .room-card > h3 {

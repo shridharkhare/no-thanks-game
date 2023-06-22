@@ -53,10 +53,36 @@
                 </ul>
             </nav>
             <hgroup>
-                <h1>Room</h1>
-                <h2>Invite people into the room!</h2>
+                <h1 id="room-title"></h1>
+                <h2 id="room-id"></h2>
             </hgroup>
         </header>
+
+        <main class="container">
+            <section class="container">
+                <h3>Players</h3>
+                <ul id="players-list"></ul>
+            </section>
+
+            <section class="container">
+                <h3>Game</h3>
+                <div id="game-info"></div>
+            </section>
+
+            <section class="container">
+                <h3>Chat</h3>
+                <div id="chat"></div>
+                <form id="chat-form">
+                    <input
+                        type="text"
+                        id="chat-input"
+                        placeholder="Type a message..."
+                        autocomplete="off"
+                    />
+                    <button type="submit" id="chat-submit">Send</button>
+                </form>
+            </section>
+        </main>
 
         <!-- Script -->
         <script type="module" src="./scripts/room.js" defer></script>

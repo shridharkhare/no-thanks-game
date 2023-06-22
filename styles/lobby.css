@@ -23,3 +23,7 @@ body > header {
     padding: 1rem;
     margin: 0.5rem 0
 }
+
+.room-card > h3 {
+    margin: 0;
+}

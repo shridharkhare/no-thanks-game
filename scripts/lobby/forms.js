@@ -1,4 +1,4 @@
-import { writeRoomData } from "../lobby/rooms.js";
+import { createRoom } from "../lobby/rooms.js";
 
 const createRoomForm = document.forms['create-room-form'];
 
@@ -6,16 +6,20 @@ createRoomForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const roomName = createRoomForm.roomname.value;
     let password = null;
+    let type = 'public';
 
     if (createRoomForm['private'].checked) {
+        type = 'private';
         password = createRoomForm.password.value;
     }
 
-    console.log(`Room name: ${roomName}`);
-    console.log(`Password: ${password}`);
-
+    // Generate random ID
     let uuid = self.crypto.randomUUID();
+    // Create room
+    createRoom(uuid, roomName, password, type);
 
-    writeRoomData(uuid, roomName, password);
+    // Redirect to room
 
+    // Clear form
+    createRoomForm.reset();
 });

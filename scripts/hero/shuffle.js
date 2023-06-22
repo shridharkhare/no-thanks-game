@@ -12,6 +12,7 @@ for (let i = 3; i <= 35; i++) {
 function regeneratePositions() {
     const paddingSpacing = 20;
     const innerSpacing = 10;
+
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 4; j++) {
             const x = (i * innerSpacing) + (i * 50) + paddingSpacing;
@@ -23,7 +24,7 @@ function regeneratePositions() {
     const lastPositionX = (0 * innerSpacing) + (0 * 50) + paddingSpacing;
     const lastPositionY = (4 * innerSpacing) + (4 * 70) + paddingSpacing;
 
-    positions.push({ x: lastPositionX, y: lastPositionY });
+    positions.push({ x: lastPositionX, y: lastPositionY })
 };
 
 //Shuffling the array of cards / Randomizing the deck
@@ -37,8 +38,11 @@ function randomizeDeck() {
 }
 
 export function setInitialDeck() {
+
     randomizeDeck();
+
     shufflingDeck.innerHTML = '';
+
     for (let i = 0; i < deck.length; i++) {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -71,15 +75,15 @@ function moveCardWithAnimation(card, startX, startY, endX, endY) {
     // Set the initial position of the card
     card.style.transform = `translate(${startX}px, ${startY}px)`;
 
-    // Save values to the card's attributes
-    card.setAttribute('data-start-x', endX);
-    card.setAttribute('data-start-y', endY);
-
     // Move the card to the end position with animation
     setTimeout(() => {
         card.style.transition = 'transform 1s';
         card.style.transform = `translate(${endX}px, ${endY}px)`;
     }, 1000);
+
+    // Save values to the card's attributes
+    card.setAttribute('data-start-x', endX);
+    card.setAttribute('data-start-y', endY);
 }
 
 function scatterCards() {
@@ -91,21 +95,22 @@ function scatterCards() {
 
         const card = cards[i];
 
-        const delay = i * 70;
+        const delay = i * 60;
 
         setTimeout(() => {
-            const deltaX = card.getAttribute('data-start-x');
-            const deltaY = card.getAttribute('data-start-y');
+            const startX = card.getAttribute('data-start-x');
+            const startY = card.getAttribute('data-start-y');
 
             // Get a random position
             const randomIndex = Math.floor(Math.random() * positions.length);
             const randomPosition = positions[randomIndex];
+
             // Remove the position from the array
             positions.splice(randomIndex, 1);
             const endX = randomPosition.x;
             const endY = randomPosition.y;
 
-            moveCardWithAnimation(card, deltaX, deltaY, endX, endY);
+            moveCardWithAnimation(card, startX, startY, endX, endY);
         }, delay);
     }
 }
@@ -122,7 +127,6 @@ function gatherCards() {
 
         moveCardWithAnimation(card, startX, startY, deltaX, deltaY);
 
-        // Set attribute aria-busy to true
         setTimeout(() => {
             // Remove the innerHTML of the card
             card.innerHTML = '';
@@ -163,7 +167,7 @@ export function animationLoop() {
     give9cardsDifferentColor();
     scatterCards();
 
-    // Wait for 2 second
+    // Wait for 3 second
     setTimeout(() => {
         gatherCards();
     }, 3000);

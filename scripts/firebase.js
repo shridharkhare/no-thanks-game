@@ -18,12 +18,5 @@ const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
 
 
-// Create a test room 
-// Set the value of the room
-export function writeRoomData(roomId, roomName, password) {
-    set(ref(db, 'rooms/' + roomId), {
-        roomName: roomName,
-        password: password
-    });
-}
+
 

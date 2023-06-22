@@ -1,4 +1,4 @@
-import { writeRoomData } from "../firebase.js";
+import { writeRoomData } from "../lobby/rooms.js";
 
 const createRoomForm = document.forms['create-room-form'];
 
@@ -14,6 +14,8 @@ createRoomForm.addEventListener('submit', (e) => {
     console.log(`Room name: ${roomName}`);
     console.log(`Password: ${password}`);
 
-    writeRoomData('03', roomName, password);
+    let uuid = self.crypto.randomUUID();
+
+    writeRoomData(uuid, roomName, password);
 
 });

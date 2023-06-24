@@ -1,0 +1,12 @@
+header.container {
+    padding-bottom: 0;
+}
+
+.room-id {
+    cursor: text;
+}
+
+.grid > article {
+    margin: 8px 0;
+    padding: 1rem;
+}

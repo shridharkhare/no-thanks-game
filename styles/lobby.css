@@ -1,3 +1,7 @@
+:root {
+  --success: #43a047;
+}
+
 body > header {
     padding-bottom: 0;
 }
@@ -33,4 +37,14 @@ body > header {
 
 .room-card > h3 {
     margin: 0;
+}
+
+.room-card > p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--success);
+}
+
+.room-card > p::before {
+    content: "🟢 ";
 }

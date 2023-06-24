@@ -30,6 +30,7 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="./styles/master.css" />
+        <link rel="stylesheet" href="./styles/room.css" />
     </head>
 
     <body>
@@ -44,6 +45,7 @@
             <i class="fa-solid"></i>
         </button>
 
+        <!-- Header -->
         <header class="container">
             <nav aria-label="breadcrumb">
                 <ul>
@@ -54,35 +56,45 @@
             </nav>
             <hgroup>
                 <h1 id="room-title"></h1>
-                <h2 id="room-id"></h2>
+                <h2 id="room-id" class="room-id"></h2>
             </hgroup>
         </header>
 
-        <main class="container">
-            <section class="container">
-                <h3>Players</h3>
-                <ul id="players-list"></ul>
-            </section>
-
-            <section class="container">
-                <h3>Game</h3>
-                <div id="game-info"></div>
-            </section>
-
-            <section class="container">
-                <h3>Chat</h3>
-                <div id="chat"></div>
-                <form id="chat-form">
+        <!-- Dialog to allow players to choose name -->
+        <dialog id="player-name-dialog">
+            <article>
+                <header>Choose a name</header>
+                <label for="player-name-input">
+                    Name
                     <input
                         type="text"
-                        id="chat-input"
-                        placeholder="Type a message..."
-                        autocomplete="off"
+                        id="player-name-input"
+                        value=""
+                        required
                     />
-                    <button type="submit" id="chat-submit">Send</button>
-                </form>
-            </section>
-        </main>
+                </label>
+
+                <footer>
+                    <a href="#" role="button" id="player-name-submit">
+                        Confirm
+                    </a>
+                </footer>
+            </article>
+        </dialog>
+
+        <!-- Main -->
+        <section class="container">
+            <div class="grid" id="player-list"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="container">
+            <!-- Leave Room button -->
+            <a href="#" role="button" id="leave-room-button">
+                Leave Room &nbsp;
+                <i class="fa-solid fa-person-walking-arrow-right"></i>
+            </a>
+        </footer>
 
         <!-- Script -->
         <script type="module" src="./scripts/room.js" defer></script>

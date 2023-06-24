@@ -4,6 +4,9 @@ const createRoomForm = document.forms['create-room-form'];
 
 createRoomForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    // Generate random ID
+    const uuid = self.crypto.randomUUID();
     const roomName = createRoomForm.roomname.value;
     let password = null;
     let type = 'public';
@@ -13,12 +16,11 @@ createRoomForm.addEventListener('submit', (e) => {
         password = createRoomForm.password.value;
     }
 
-    // Generate random ID
-    let uuid = self.crypto.randomUUID();
     // Create room
     createRoom(uuid, roomName, password, type);
 
     // Redirect to room
+    window.location.href = "/room.html?roomId=" + uuid;
 
     // Clear form
     createRoomForm.reset();

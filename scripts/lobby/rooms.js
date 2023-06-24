@@ -21,16 +21,19 @@ export function createRoom(roomId, roomName, password, type) {
         set(ref(db, 'rooms/public/' + roomId), {
             roomName: roomName,
             type: type, // public or private
+            members: {},
         });
     } else if (type === "private") {
         set(ref(db, 'rooms/private/' + roomId), {
             roomName: roomName,
             password: password,
             type: type, // public or private
+            members: {},
         });
     }
 }
 
+// Update the rooms list in the lobby
 export function updateRooms(rooms) {
     const roomsList = document.getElementById("public-rooms-list");
     // Clear the list
@@ -40,7 +43,9 @@ export function updateRooms(rooms) {
     for (const room in rooms) {
         const roomName = rooms[room].roomName;
         const roomId = room;
+        const numMembers = rooms[room].members ? Object.keys(rooms[room].members).length : 0;
 
+        // Create the room item (card)
         const roomItem = document.createElement("article");
         roomItem.classList.add("room-card");
 
@@ -48,11 +53,16 @@ export function updateRooms(rooms) {
             window.location.href = "/room.html?roomId=" + roomId;
         });
 
+        // Create the room name element
         const roomNameElement = document.createElement("h3");
         roomNameElement.textContent = roomName;
 
-        roomItem.appendChild(roomNameElement);
+        // Create the room members element
+        const roomMembersElement = document.createElement("p");
+        roomMembersElement.textContent = numMembers + " member(s)";
 
+        roomItem.appendChild(roomNameElement);
+        roomItem.appendChild(roomMembersElement);
         roomsList.appendChild(roomItem);
     }
 }

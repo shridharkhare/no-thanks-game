@@ -50,7 +50,7 @@ export function updateRooms(rooms) {
         roomItem.classList.add("room-card");
 
         roomItem.addEventListener("click", () => {
-            window.location.href = "/room.html?roomId=" + roomId;
+            window.location.href = "/room.html?type=public&roomId=" + roomId;
         });
 
         // Create the room name element

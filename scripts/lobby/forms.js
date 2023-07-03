@@ -20,7 +20,7 @@ createRoomForm.addEventListener('submit', (e) => {
     createRoom(uuid, roomName, password, type);
 
     // Redirect to room
-    window.location.href = "/room.html?roomId=" + uuid;
+    window.location.href = `/room.html?type=${type}&roomId=${uuid}`;
 
     // Clear form
     createRoomForm.reset();

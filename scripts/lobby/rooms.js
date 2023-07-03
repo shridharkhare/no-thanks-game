@@ -71,5 +71,6 @@ export function updateRooms(rooms) {
 const roomsRef = ref(db, 'rooms/public');
 onValue(roomsRef, (snapshot) => {
     const data = snapshot.val();
+    console.log(data);
     updateRooms(data);
 });

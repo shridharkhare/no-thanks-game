@@ -20,9 +20,10 @@ export function updateRoomId(roomId) {
 // Get the room id from the url
 const urlParams = new URLSearchParams(window.location.search);
 const roomId = urlParams.get('roomId');
+const type = urlParams.get('type');
 
 // Get the room name from the database
-onValue(ref(db, 'rooms/public/' + roomId + '/roomName'), (snapshot) => {
+onValue(ref(db, `rooms/${type}/${roomId}/roomName`), (snapshot) => {
     const roomName = snapshot.val();
     updateRoomTitle(roomName);
     updateRoomId(roomId);
@@ -75,7 +76,7 @@ function updatePlayerNameInDatabase(playerName) {
         return;
     }
 
-    set(ref(db, 'rooms/public/' + roomId + '/members/' + window.localStorage.getItem('noThanksGamePlayerId') + '/name'), playerName);
+    set(ref(db, 'rooms/' + type + '/' + roomId + '/members/' + window.localStorage.getItem('noThanksGamePlayerId') + '/name'), playerName);
 }
 
 updatePlayerNameInDatabase(currentPlayerName);
@@ -103,7 +104,7 @@ function showMembers(members) {
 }
 
 // When a player joins the room, add them to the player list
-onValue(ref(db, 'rooms/public/' + roomId + '/members'), (snapshot) => {
+onValue(ref(db, `rooms/${type}/${roomId}/members`), (snapshot) => {
     const members = snapshot.val();
     showMembers(members);
 });
@@ -114,7 +115,7 @@ onValue(ref(db, 'rooms/public/' + roomId + '/members'), (snapshot) => {
 const leaveRoomButton = document.getElementById('leave-room-button');
 
 leaveRoomButton.addEventListener('click', () => {
-    set(ref(db, 'rooms/public/' + roomId + '/members/' + window.localStorage.getItem('noThanksGamePlayerId')), null);
+    set(ref(db, `rooms/${type}/${roomId}/members/${window.localStorage.getItem('noThanksGamePlayerId')}`), null);
 
     window.localStorage.removeItem('noThanksGamePlayerName');
     window.localStorage.removeItem('noThanksGamePlayerId');

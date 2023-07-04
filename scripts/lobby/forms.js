@@ -1,4 +1,4 @@
-import { createRoom } from "../lobby/rooms.js";
+import { createRoom } from "./rooms-list.js";
 
 const createRoomForm = document.forms['create-room-form'];
 

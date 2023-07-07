@@ -1,6 +1,6 @@
 import { get, set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 import { db } from "../utils/firebase.js";
-import { startGame } from "./game.js";
+import { startGame } from "./game/game.js";
 
 export const startGameBtn = (button, roomId, type) => {
     // Check if the game has already started

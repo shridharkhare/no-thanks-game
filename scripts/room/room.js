@@ -4,7 +4,7 @@ import { get, set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.
 import { updatePlayerNameInDatabase, showMembers } from "./r-player.js";
 import { updateRoomTitle, updateRoomId } from "./r-title.js";
 import { startGameBtn } from "./startGameBtn.js";
-import { leaveRoomBtn } from "./leaveRoomBtn.js";
+import { setGame } from "./game/game.js";
 
 // Theme
 setInitialTheme();
@@ -31,11 +31,36 @@ onValue(ref(db, `rooms/${type}/${roomId}/members`), (snapshot) => {
     showMembers(members);
 });
 
-// ==================== LEAVE ROOM ====================
+// Buttons
 const leaveRoomButton = document.getElementById('leave-room-button');
+const playerId = window.localStorage.getItem('noThanksGamePlayerId')
+leaveRoomButton.addEventListener('click', async () => {
+    set(ref(db, `rooms/${type}/${roomId}/members/${playerId}`), null);
 
-leaveRoomBtn(leaveRoomButton, roomId, type);
+    // Remove the player info from the local storage
+    const localPlayerInfo = window.localStorage.getItem('noThanksGamePlayerInfo');
+    window.localStorage.removeItem('noThanksGamePlayerInfo');
+    const localPlayerInfoObj = JSON.parse(localPlayerInfo);
+
+    delete localPlayerInfoObj[roomId];
+
+    window.localStorage.setItem('noThanksGamePlayerInfo', JSON.stringify(localPlayerInfoObj));
+
+    window.location.href = 'lobby.html';
+    console.log('leave room');
+});
 
 const startGameButton = document.getElementById('start-game-button');
-
 startGameBtn(startGameButton, roomId, type);
+
+// Game
+// Check if the game has started, if so, set the game
+onValue(ref(db, `rooms/${type}/${roomId}/game`), (snapshot) => {
+    const game = snapshot.val();
+    if (game) {
+        setGame(roomId, type);
+    } else {
+        const gameCanvas = document.getElementById('game-canvas');
+        gameCanvas.classList.add('hidden');
+    }
+});

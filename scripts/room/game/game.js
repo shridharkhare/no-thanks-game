@@ -46,3 +46,11 @@ export const startGame = async (roomId) => {
     // Initialize the board
     initializeBoard();
 };
+
+// Function to set the game
+export const setGame = (roomId, type) => {
+    // Get the game state from the database
+    onValue(ref(db, `rooms/${type}/${roomId}/game`), (snapshot) => {
+        game = snapshot.val();
+    });
+}

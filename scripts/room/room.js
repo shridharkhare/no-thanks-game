@@ -4,7 +4,7 @@ import { get, set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.
 import { updatePlayerNameInDatabase, showMembers } from "./r-player.js";
 import { updateRoomTitle, updateRoomId } from "./r-title.js";
 import { startGameBtn } from "./startGameBtn.js";
-import { setGame } from "./game/game.js";
+import { Game } from "./game/game.js";
 
 // Theme
 setInitialTheme();
@@ -53,12 +53,14 @@ leaveRoomButton.addEventListener('click', async () => {
 const startGameButton = document.getElementById('start-game-button');
 startGameBtn(startGameButton, roomId, type);
 
-// Game
+// Create a new game
+const thisRoomGame = new Game();
+
 // Check if the game has started, if so, set the game
 onValue(ref(db, `rooms/${type}/${roomId}/game`), (snapshot) => {
     const game = snapshot.val();
     if (game) {
-        setGame(roomId, type);
+        thisRoomGame.setGame(game);
     } else {
         const gameCanvas = document.getElementById('game-canvas');
         gameCanvas.classList.add('hidden');

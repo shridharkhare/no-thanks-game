@@ -1,12 +1,13 @@
 import { get, set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 import { db } from "../utils/firebase.js";
-import { startGame } from "./game/game.js";
+import { Game } from "./game/game.js";
 
 export const startGameBtn = (button, roomId, type) => {
     // Check if the game has already started
-    const gameStartedRef = ref(db, `rooms/${roomId}/gameStarted`);
+    const gameStartedRef = ref(db, `rooms/${type}/${roomId}/gameStarted`);
+
     onValue(gameStartedRef, (snapshot) => {
-        if (snapshot.val()) {
+        if (snapshot.val() === true) {
             button.disabled = true;
             button.innerHTML = "Game is in progress...";
         } else {
@@ -37,10 +38,10 @@ export const startGameBtn = (button, roomId, type) => {
                                 button.disabled = true;
                             });
                         } else {
-                            // Call the startGame function
-                            startGame(roomId);
-                            // Disable the button
+                            const game = new Game();
+                            game.startGame(roomId, type);
                             button.disabled = true;
+                            set(ref(db, `rooms/${type}/${roomId}/gameStarted`), true);
                         }
                     });
                 }

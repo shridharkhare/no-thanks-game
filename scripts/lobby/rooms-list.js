@@ -23,6 +23,7 @@ export function createRoom(roomId, roomName, password, type) {
             type: type, // public or private
             members: {},
             startGameCount: 0,
+            gameStarted: false,
         });
     } else if (type === "private") {
         set(ref(db, 'rooms/private/' + roomId), {
@@ -31,6 +32,7 @@ export function createRoom(roomId, roomName, password, type) {
             type: type, // public or private
             members: {},
             startGameCount: 0,
+            gameStarted: false,
         });
     }
 }

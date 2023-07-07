@@ -40,11 +40,6 @@ const initializePlayers = () => {
 };
 
 export const startGame = async (roomId) => {
-
-    // Expand the game area to 100vh
-    const gameCanvas = document.getElementById("game-canvas");
-    gameCanvas.classList.remove("hidden");
-
     // Initialize the deck
     initializeDeck();
 

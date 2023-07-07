@@ -85,18 +85,27 @@
         <!-- Main -->
         <section class="container">
             <div class="grid" id="player-list"></div>
+
+            <!-- Buttons -->
+            <div class="grid">
+                <!-- Start Game button -->
+                <button id="start-game-button"></button>
+                <!-- Leave Room button -->
+                <button id="leave-room-button">
+                    Leave Room &nbsp;
+                    <i class="fa-solid fa-person-walking-arrow-right"></i>
+                </button>
+            </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="container">
-            <!-- Leave Room button -->
-            <a href="#" role="button" id="leave-room-button">
-                Leave Room &nbsp;
-                <i class="fa-solid fa-person-walking-arrow-right"></i>
-            </a>
-        </footer>
+        <!-- Game -->
+        <section class="container">
+            <article class="game-canvas hidden" id="game-canvas">
+                <div class="deck" id="deck"></div>
+            </article>
+        </section>
 
         <!-- Script -->
-        <script type="module" src="./scripts/room.js" defer></script>
+        <script type="module" src="./scripts/room/room.js" defer></script>
     </body>
 </html>

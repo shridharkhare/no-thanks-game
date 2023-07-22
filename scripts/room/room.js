@@ -60,7 +60,7 @@ const thisRoomGame = new Game();
 onValue(ref(db, `rooms/${type}/${roomId}/game`), (snapshot) => {
     const game = snapshot.val();
     if (game) {
-        thisRoomGame.setGame(game);
+        thisRoomGame.setGame(roomId, type, game);
     } else {
         const gameCanvas = document.getElementById('game-canvas');
         gameCanvas.classList.add('hidden');

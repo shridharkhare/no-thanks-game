@@ -1,8 +1,11 @@
 import { db } from '../../utils/firebase.js';
 import { get, set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+import { createCardElement } from './elements.js';
 
 export class Game {
     constructor() {
+        this.roomId;
+        this.type;
         this.players = [];
         this.deck = [];
         this.topCard = 0;
@@ -70,6 +73,47 @@ export class Game {
     }
 
     async setGame(roomId, type, game) {
-        this.game = game;
+        console.log(game);
+        this.players = game.players;
+        this.deck = game.deck;
+        this.topCard = game.topCard;
+        this.currentCard = game.currentCard;
+        this.currentPlayer = game.currentPlayer;
+        this.currentBid = game.currentBid;
+        this.roomId = roomId;
+        this.type = type;
+
+        this.setGameGraphics();
+    }
+
+    setGameGraphics() {
+        // Set the top card
+        const deck = document.getElementById('deck');
+        const topCard = createCardElement(this.topCard);
+        deck.appendChild(topCard);
+
+        // Set the current player
+        // Place the buttons to accept or pass the card
+        const currentPlayer = document.getElementById('current-player');
+        currentPlayer.textContent = this.currentPlayer;
+
+        // Create the buttons
+        const acceptButton = document.createElement('button');
+        acceptButton.textContent = 'Accept';
+        acceptButton.addEventListener('click', () => {
+            this.acceptCard();
+        }
+        );
+
+        const passButton = document.createElement('button');
+        passButton.textContent = 'Pass';
+        passButton.addEventListener('click', () => {
+            this.passCard();
+        }
+        );
+
+        // Add the buttons to the DOM
+        currentPlayer.appendChild(acceptButton);
+        currentPlayer.appendChild(passButton);
     }
 }

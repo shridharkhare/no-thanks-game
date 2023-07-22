@@ -6,6 +6,13 @@
     display: none;
 }
 
+body {
+    background-image: url("../images/curve-line.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
 
 hgroup:after {
     display: block;

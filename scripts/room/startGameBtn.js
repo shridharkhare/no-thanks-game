@@ -10,6 +10,7 @@ export const startGameBtn = (button, roomId, type) => {
         if (snapshot.val() === true) {
             button.disabled = true;
             button.innerHTML = "Game is in progress...";
+            console.log("Game is in progress...");
         } else {
             // Check if the room has enough players
             onValue(ref(db, `rooms/${type}/${roomId}/members`), (snapshot) => {
@@ -42,6 +43,8 @@ export const startGameBtn = (button, roomId, type) => {
                             game.startGame(roomId, type);
                             button.disabled = true;
                             set(ref(db, `rooms/${type}/${roomId}/gameStarted`), true);
+                            const gameCanvas = document.getElementById('game-canvas');
+                            gameCanvas.classList.remove('hidden');
                         }
                     });
                 }

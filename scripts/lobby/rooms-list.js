@@ -53,9 +53,17 @@ export function updateRooms(rooms) {
         const roomItem = document.createElement("article");
         roomItem.classList.add("room-card");
 
-        roomItem.addEventListener("click", () => {
-            window.location.href = "/room.html?type=public&roomId=" + roomId;
-        });
+        // Add an event listener to the room if it is not full
+
+        if (numMembers < 4) {
+            roomItem.addEventListener("click", () => {
+                window.location.href = "/room.html?type=public&roomId=" + roomId;
+            });
+        }
+        else {
+            // Add a data-tooltip attribute to the room item
+            roomItem.setAttribute("data-tooltip", "This room is full");
+        }
 
         // Create the room name element
         const roomNameElement = document.createElement("h3");

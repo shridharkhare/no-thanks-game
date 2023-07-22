@@ -14,40 +14,80 @@ header.container {
 .game-canvas {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #450604;
     background-image: url("../images/wood-pattern.png");
     background-repeat: repeat;
     border: 1px solid;
     border-color: var(--contrast);
     border-radius: 5px;
+
+    display: grid;
+}
+
+.player-area {
+    padding: 1rem;
+}
+
+.top-player {
+    /* Takes the full top row */
+    grid-column: 1 / 4;
+    grid-row: 1;
+}
+
+.left-player {
+    /* Takes 1/3 of the middle row */
+    grid-column: 1;
+    grid-row: 2;
 }
 
 .game-canvas > .deck {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.right-player {
+    /* Takes 1/3 of the middle row */
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.current-player {
+    /* Takes the full bottom row */
+    grid-column: 1 / 4;
+    grid-row: 3;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+
     display: grid;
     place-items: center;
 }
 
-.card {
-    position: absolute;
-    width: 100px;
-    height: 150px;
-    border-radius: 5px;
-    background-color: wheat;
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
+.card-number {
+    font: 700 2.5rem 'Roboto', sans-serif;
+    color: black;
 }
 
-.card-number {
+.card-number-top-left {
     position: absolute;
     top: 5px;
-    left: 5px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--contrast);
+    left: 7px;
+    color: black;
+}
+
+.card-number-bottom-right {
+    position: absolute;
+    bottom: 5px;
+    right: 7px;
+    color: black;
 }

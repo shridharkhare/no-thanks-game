@@ -101,14 +101,27 @@
         <!-- Game -->
         <section class="container">
             <article class="game-canvas" id="game-canvas">
-                <div class="player-area top-player"></div>
-                <div class="player-area left-player"></div>
+                <div class="player-area top-player" id="top-player">
+                    <h4 id="tp-name"></h4>
+                    <div class="tp-hand" id="tp-hand"></div>
+                </div>
+                <div class="player-area left-player" id="left-player">
+                    <h4 id="lp-name"></h4>
+                    <div class="lp-hand" id="lp-hand"></div>
+                </div>
                 <div class="player-area deck" id="deck"></div>
-                <div class="player-area right-player"></div>
-                <div
-                    class="player-area current-player"
-                    id="current-player"
-                ></div>
+                <div class="player-area right-player" id="right-player">
+                    <h4 id="rp-name"></h4>
+                    <div class="rp-hand" id="rp-hand"></div>
+                </div>
+                <div class="player-area bottom-player" id="bottom-player">
+                    <h4 id="bp-name"></h4>
+                    <div class="bp-hand" id="hand"></div>
+                    <div class="bp-buttons grid">
+                        <button id="take-button">Take</button>
+                        <button id="pass-button">Pass</button>
+                    </div>
+                </div>
             </article>
         </section>
 

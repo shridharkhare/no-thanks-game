@@ -10,7 +10,6 @@ export const startGameBtn = (button, roomId, type) => {
         if (snapshot.val() === true) {
             button.disabled = true;
             button.innerHTML = "Game is in progress...";
-            console.log("Game is in progress...");
         } else {
             // Check if the room has enough players
             onValue(ref(db, `rooms/${type}/${roomId}/members`), (snapshot) => {

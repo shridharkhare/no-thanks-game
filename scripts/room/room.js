@@ -59,7 +59,9 @@ const thisRoomGame = new Game();
 // Check if the game has started, if so, set the game
 onValue(ref(db, `rooms/${type}/${roomId}/game`), (snapshot) => {
     const game = snapshot.val();
+    console.log(game);
     if (game) {
+        thisRoomGame.clearOldState();
         thisRoomGame.setGame(roomId, type, game);
     } else {
         const gameCanvas = document.getElementById('game-canvas');
